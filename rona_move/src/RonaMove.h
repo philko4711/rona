@@ -31,6 +31,7 @@
 #include "Controller/Controller_base.h"
 
 #include "rona_move/MoveConfig.h"
+#include <dynamic_reconfigure/server.h>
 
 using namespace Eigen;
 
@@ -140,6 +141,9 @@ private:
   ros::Timer _loopTimer;
 
   tf::TransformListener _tf_listnener;
+
+  dynamic_reconfigure::Server<rona_move::MoveConfig> _serverReconf; ///< ROS dynamic reconfigure server
+  dynamic_reconfigure::Server<rona_move::MoveConfig>::CallbackType _callBackConfig; ///< ROS dynamic reconfigure object
 
   //todo add pos hold
   enum State

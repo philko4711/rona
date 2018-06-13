@@ -186,6 +186,10 @@ RonaMove::RonaMove()
 
   _state = State::STOP;
 
+  _callBackConfig = boost::bind(&RonaMove::callbackDynamicReconfigure, this, _1, _2);
+   _serverReconf.setCallback(_callBackConfig);
+
+
 }
 
 RonaMove::~RonaMove()
