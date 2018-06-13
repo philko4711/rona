@@ -34,6 +34,7 @@ BasicAnalyser::~BasicAnalyser()
    /* nothing to do */
 }
 
+
 analyser::diff_scale BasicAnalyser::analyse(const analyser::pose& current_pose)
 {
   analyser::diff_scale diff_scale;
@@ -183,6 +184,14 @@ void BasicAnalyser::local_reachedFinalGoal(bool state)
     _reachedLastPose = false;
   }
   _curr_target_radius = _target_radius;
+}
+
+void BasicAnalyser::setConfig( double target_r, double target_r_last, unsigned int cos_pwr_n, double cos_fac_n)
+{
+  _target_radius = target_r;
+  _target_radius_last = target_r_last;
+  _cos_pwr_n = cos_pwr_n;
+  _cos_fac_n = cos_fac_n;
 }
 
 } /* namespace analyser */

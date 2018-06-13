@@ -63,4 +63,12 @@ void PathAnalyser_base::nextGoal()
     _path_lenth_rest -= (_path[_currentGoal_index-1].position - _path[_currentGoal_index].position).norm();
 }
 
+void PathAnalyser_base::setConfig( double target_r, double target_r_last, unsigned int cos_pwr_n, double cos_fac_n)
+{
+//  _target_radius = target_r;
+//  _target_radius_last = target_r_last;
+//  _cos_pwr_n = cos_pwr_n;
+//  _cos_fac_n = cos_fac_n;
+}
+
 } // namespace analyser

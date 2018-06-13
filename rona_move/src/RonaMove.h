@@ -30,6 +30,8 @@
 #include "PathAnalyser/PathAnalyser_base.h"
 #include "Controller/Controller_base.h"
 
+#include "rona_move/MoveConfig.h"
+
 using namespace Eigen;
 
 /*
@@ -116,8 +118,9 @@ private:  //functions
   bool processNodeCtrl(const rona_msgs::NodeCtrl& msg);
 
 private:
-  //dataelements
 
+  //dataelements
+  void callbackDynamicReconfigure(rona_move::MoveConfig& config, uint32_t level);
   ros::NodeHandle _nh;
 
   ros::Publisher _pub_cmd_vel;

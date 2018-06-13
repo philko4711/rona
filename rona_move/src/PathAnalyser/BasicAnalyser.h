@@ -51,6 +51,8 @@ private: //functions
 
    void local_reachedFinalGoal(bool state);
 
+   virtual void setConfig( double target_r, double target_r_last, unsigned int cos_pwr_n, double cos_fac_n);
+
 private: //dataelements
    //analyser parameter
    double _target_radius;

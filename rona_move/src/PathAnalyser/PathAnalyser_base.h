@@ -90,6 +90,8 @@ public:
    */
   virtual ~PathAnalyser_base() { }
 
+//  void setConfig( double target_r, double target_r_last, unsigned int cos_pwr_n, double cos_fac_n);
+
   /**
    * @brief set new path
    *
@@ -98,6 +100,8 @@ public:
    * @return void
    */
   void setPath(std::vector<analyser::pose>&& path);
+
+  virtual void setConfig( double target_r, double target_r_last, unsigned int cos_pwr_n, double cos_fac_n);
 
   /**
    * @brief set new path

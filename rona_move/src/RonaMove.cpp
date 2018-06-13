@@ -562,6 +562,11 @@ bool RonaMove::processNodeCtrl(const rona_msgs::NodeCtrl& msg)
   return true;
 }
 
+void RonaMove::callbackDynamicReconfigure(rona_move::MoveConfig& config, uint32_t level)
+{
+  _pathAnalyser->setConfig(config.target_radius, config.target_radius_final, config.cos_pwr_n, config.cos_fac_n);
+  _controller->setConfig(config.vel_lin_max, config.vel_ang_max, config.lin_ctrl_scale, config.ang_ctrl_scale);
+}
 
 //--------main-----------------
 
