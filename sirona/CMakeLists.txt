@@ -14,6 +14,7 @@ find_package(catkin REQUIRED COMPONENTS
   tf
   rona_lib
   visualization_msgs
+  dynamic_reconfigure
 )
 
 find_package(cmake_modules REQUIRED)
@@ -98,10 +99,10 @@ FIND_PACKAGE( OpenCV 3 REQUIRED )
 ##     and list every .cfg file to be processed
 
 ## Generate dynamic reconfigure parameters in the 'cfg' folder
-# generate_dynamic_reconfigure_options(
-#   cfg/DynReconf1.cfg
+generate_dynamic_reconfigure_options(
+   cfg/ReconfigurePlan.cfg
 #   cfg/DynReconf2.cfg
-# )
+ )
 
 ###################################
 ## catkin specific configuration ##

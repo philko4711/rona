@@ -29,6 +29,9 @@
 #include <rona_msgs/Obstacle.h>
 #include <rona_msgs/PlanPath.h>
 
+#include "sirona/ReconfigurePlanConfig.h"
+#include <dynamic_reconfigure/server.h>
+
 class SironaPlan
 {
 private:    //dataelements
@@ -94,7 +97,7 @@ private:    //functions
     void debug_save_as_img(std::string file,
                            std::shared_ptr<rona::map::Grid> grid,
                            std::vector<rona::map::Node> path = std::vector<rona::map::Node>(0));
-
+    void callbackDynamicReconfigure(sirona::ReconfigurePlanConfig& config, uint32_t level);
     /**
      * @brief does all MapOperations on a new/copied map
      * @param map_raw
@@ -112,7 +115,8 @@ private:    //functions
 
     bool srvCallback_plan_sorted(rona_msgs::PlanPathRequest& req,
                                  rona_msgs::PlanPathResponse& res);
-
+    dynamic_reconfigure::Server<sirona::ReconfigurePlanConfig> _serverReconf; ///< ROS dynamic reconfigure server
+      dynamic_reconfigure::Server<sirona::ReconfigurePlanConfig>::CallbackType _callBackConfig; ///< ROS dynamic reconfigure object
 };
 
 #endif /* SIRONAPLAN_H_ */

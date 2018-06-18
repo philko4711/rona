@@ -75,8 +75,8 @@ SironaPlan::SironaPlan()
 
 
     _srv_plan_path = _nh.advertiseService("/rona/plan/path", &SironaPlan::srvCallback_plan_sorted, this);
-
-
+    _callBackConfig = boost::bind(&SironaPlan::callbackDynamicReconfigure, this, _1, _2);
+    _serverReconf.setCallback(_callBackConfig);
 }
 
 SironaPlan::~SironaPlan()
@@ -381,7 +381,11 @@ bool SironaPlan::srvCallback_plan_sorted(rona_msgs::PlanPathRequest& req, rona_m
    return true;
 }
 
-
+void SironaPlan::callbackDynamicReconfigure(sirona::ReconfigurePlanConfig& config, uint32_t level)
+{
+_robot_radius = config.robot_radius;
+_dt_radius = config.dt_radius;
+}
 
 //------------------------------------------------------------------------------
 //-- main --
